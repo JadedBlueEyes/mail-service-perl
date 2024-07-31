@@ -26,10 +26,8 @@ jobs:
         with:
           generator: perl
           config-file: perl-generator-config.yml
-
+      - uses: actions4git/setup-git@v1
       - name: Commit the client to the repo
         run: |
-          git config --global user.name '${GITHUB_ACTOR}' 
-          git config --global user.email '${GITHUB_ACTOR}@users.noreply.github.com' 
           git add -A && git commit -m 'Update perl client' --allow-empty 
           git push -u origin HEAD
