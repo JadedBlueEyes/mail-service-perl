@@ -49,8 +49,15 @@ sub new {
         $config = MailService::Configuration->new(@_);
     }
 
+    my $ua;
+    if ( $_[1] && $_[1]->isa("LWP::UserAgent") ) {
+        $ua = $_[1];
+    } else {
+        $ua = LWP::UserAgent->new;
+    }
+
     my (%args) = (
-        'ua' => LWP::UserAgent->new,
+        'ua' => $ua,
         'config' => $config,
     );
 

@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 bin/autodoc
@@ -28,12 +27,3 @@ lib/MailService/Object/SendResponseOneOf1C.pm
 lib/MailService/Object/SendResponseOneOfC.pm
 lib/MailService/Role.pm
 lib/MailService/Role/AutoDoc.pm
-t/CrateApiTest.t
-t/CraterenderApiTest.t
-t/CratesendApiTest.t
-t/SendItemTest.t
-t/SendResponseOneOf1CTest.t
-t/SendResponseOneOf1Test.t
-t/SendResponseOneOfCTest.t
-t/SendResponseOneOfTest.t
-t/SendResponseTest.t
