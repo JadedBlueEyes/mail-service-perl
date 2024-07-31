@@ -1,0 +1,35 @@
+name: Update Clients
+on:
+  push:
+    branches:
+      - main
+jobs:
+  generate-perl-client:
+    runs-on: ubuntu-latest
+    name: Generate Perl Client
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+    steps:
+
+      # Checkout your code
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Generate your OpenAPI document (if you don't write it manually)
+
+      # Use the action to generate a client package
+      # This uses the default path for the openapi document and thus assumes there is an openapi.json in the current workspace.
+      - name: Generate Perl Client
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: perl
+          config-file: perl-generator-config.yml
+
+      - name: Commit the client to the repo
+        run: |
+          git config --global user.name '${GITHUB_ACTOR}' 
+          git config --global user.email '${GITHUB_ACTOR}@users.noreply.github.com' 
+          git add -A && git commit -m 'Update perl client' --allow-empty 
+          git push -u origin HEAD
