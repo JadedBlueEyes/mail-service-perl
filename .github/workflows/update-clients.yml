@@ -26,6 +26,7 @@ jobs:
         with:
           generator: perl
           config-file: perl-generator-config.yml
+          template-dir: templates/perl
       - uses: actions4git/setup-git@v1
       - name: Commit the client to the repo
         run: |
